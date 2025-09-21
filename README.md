@@ -3,7 +3,7 @@
 A small notebook on the web.  
 Essays, fragments, sketches — half-finished things I’m trying and sharing.  
 
-**Live site** → [https://username.github.io/studionotes](https://username.github.io/studionotes)
+**Live site** → [www.studionotes.com](https://astraflaneur.github.io/studio.notes/)
 
 ---
 
@@ -21,6 +21,6 @@ drafts, sketches, and fragments collected in public.
 Clone and serve locally:
 
 ```bash
-git clone https://github.com/username/studionotes.git
+git clone https://github.com/Astraflaneur/studio.notes.git
 cd studionotes
 open index.html   # or use any local server
