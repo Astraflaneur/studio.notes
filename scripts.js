@@ -1,22 +1,134 @@
   const allPosts = [
-    {
-      id:1,
-      title:'Morning Pages',
+  {
+    id:1,
+    title:'Morning Pages',
+    author:'Sagar P. Barad',
+    date:'September 2025',
+    excerpt:'Fifteen minutes, bad handwriting, and too much coffee, that’s the whole ritual.',
+    tags:['writing','life'],
+    body:`<p><span class="dropcap">M</span>y handwriting looks like it’s been in a minor accident. 
+    Which is why I keep a notebook just for mornings. 
+    The deal is simple: write before I’m awake enough to know better. 
+    No editing, no crossing out, just scribbles that sometimes turn into sentences.</p>
+
+    <p>Most days it’s a grocery list in disguise. 
+    Sometimes it’s a rant about the chair I still haven’t replaced. 
+    Once in a while, it’s something worth keeping.</p>
+
+    <blockquote>Rule: keep writing until the coffee runs out, not before.</blockquote>
+
+    <p>Notes: the point isn’t to make sense. 
+    It’s to prove you showed up, even if the page looks like chicken scratch.</p>`
+  },
+  {
+    id:2,
+    title:'On Paper & Pixel',
+    author:'Sagar P. Barad',
+    date:'August 2025',
+    excerpt:'Drawing on paper is cute until you smudge it, scan it, and realize your laptop fan is louder than your art.',
+    tags:['art','everyday'],
+    body:`<p><span class="dropcap">P</span>encil on paper feels romantic until the eraser crumbs attack. 
+    Then you scan it, open the file, and suddenly it’s not “art,” it’s 400% zoomed chaos. 
+    Every smudge looks like a shadow you meant to draw. 
+    Spoiler: you didn’t.</p>
+
+    <p>But pixels forgive. 
+    Ctrl+Z is the friend who always answers your calls. 
+    And honestly, that’s why half my sketches survive — 
+    because I can fix the mistake I swore was “intentional texture.”</p>
+
+    <blockquote>Rule: keep the smudge. Delete the guilt.</blockquote>
+
+    <p>Notes: Paper or pixel, it’s still just you staring too long at lines, 
+    wondering if this one finally looks alive.</p>`
+  },
+
+        {
+      id:3,
+      title:'Things I’ve Carried (and Still Forgot My Charger)',
       author:'Sagar P. Barad',
-      date:'September 2025',
-      excerpt:'Three prompts that help get ink on the page when the day wants to stay quiet.',
-      tags:['writing','essay'],
-      body:`<p><span class="dropcap">W</span>hen I sit at the window with a mug and a page, the city sounds like a soft machine. The ritual is simple: write for fifteen minutes without judgment. Let sentences arrive like visitors — early and awkward, then familiar.</p><blockquote>Write without the editor.</blockquote><p>Notes: keep the page private, keep the timer honest.</p>`
+      date:'June 2025',
+      excerpt:'A life measured in backpacks, tote bags, and broken trolley wheels — and what we choose to carry forward.',
+      tags:['essay','life'],
+      body:`<p><span class="dropcap">O</span>ne thing no one tells you about growing up: 
+      your life can be measured by the bags you’ve carried.</p>
+
+      <p>Like that oversized Ben 10 backpack in Class 6, 
+      stuffed with leaky Camlin glue, a crushed tiffin box, 
+      and homework you definitely didn’t forget.</p>
+
+      <p>Then came the rebellious Wildcraft bag in college, 
+      twelve zips, three hidden compartments, half of which led nowhere, 
+      and stickers that screamed “Me sarcastic NEVER!!” 
+      Your mom hated it. 
+      She also sewed the straps when they tore. Twice.</p>
+
+      <p>Adulthood? It’s tote bags. 
+      For groceries. For exams. For that bookstore you never leave empty-handed. 
+      Each one with that oddly specific smell: incense, ink, and crumbled biscuits.</p>
+
+      <p>Independence is a Sunday-night duffel bag. 
+      Detergent sachets, two pairs of jeans, 
+      and the weight of five unread PDFs you swore you’d finish last week.</p>
+
+      <p>There’s the mini Decathlon backpack: 
+      coffee, electrolytes, a harmonica you’re still waiting to play at the right moment. 
+      And always, two bananas.</p>
+
+      <p>Self-growth looks like a suitcase dragged through a new country, 
+      stuffed with borrowed confidence 
+      and missing, of course, your towel.</p>
+
+      <p>Parenthood? (God, not yet.) 
+      But maybe it’s your cousin’s diaper bag, 
+      next to the flask your uncle still brings to weddings.</p>
+
+      <blockquote>It’s tempting to call it baggage. 
+      But I think it’s luggage. 
+      Baggage drags. 
+      Luggage is what you cared enough to carry forward. 
+      Even if you forgot your charger. Again.</blockquote>`
     },
     {
-      id:2,
-      title:'On Paper & Pixel',
+      id:4,
+      title:'Just So We’re Clear',
       author:'Sagar P. Barad',
-      date:'August 2025',
-      excerpt:'Where tactile marks meet digital light — thoughts on translating sketches into small animations.',
-      tags:['sketch','art'],
-      body:`<p>There is a tenderness to analog marks. When translated to pixels, preserve the mistakes; they are where the work remembers how it began.</p>`
-    },
+      date:'July 2025',
+      excerpt:'The quiet, ordinary, forgettable moments — they’re the ones that make it real.',
+      tags:['essay','reflection'],
+      body:`<p><span class="dropcap">I</span> know you’ve got a lot going on right now, 
+      but this is it. This moment. 
+      Sitting at your desk, waiting for the code to run so you can finally sleep. 
+      Or lying in bed, debating if tonight’s the night you actually go out for dinner, 
+      or just order the same thing again.</p>
+
+      <p>This is it. This is all there ever is. 
+      It’s beautiful. It’s boring. It’s exhausting.</p>
+
+      <p>Growing up is choosing the things that are worth being tired for. 
+      While the clicking in your knee gets louder, 
+      and the voice in your head that worries what everyone thinks gets a little quieter.</p>
+
+      <p>And yeah, maybe next week you’ll hear back from that job. 
+      Or the test result you’ve been pretending not to think about. 
+      But this is still it. 
+      The warm breeze on cold skin. 
+      The dull ache in your lower back from a chair that doesn’t quite fit right. 
+      The glow of your screen. 
+      The message you almost send, then delete. 
+      The plans you almost make, then cancel.</p>
+
+      <blockquote>You grow into things. 
+      Friends come and go. 
+      Dates get more honest. 
+      Mornings hurt a little more.</blockquote>
+
+      <p>But the ordinary, the quiet, forgettable moments, 
+      they’re the ones that make it real. 
+      And growing up? 
+      It’s everything the world tries to convince you to avoid.</p>`
+    }
+
   ];
 
   const postsEl = document.getElementById('posts');
@@ -34,6 +146,7 @@
     return el;
   }
 
+  
   function renderHome(){
     postsEl.innerHTML='';
     // add cards with a small staggered appear animation
@@ -57,6 +170,24 @@
     })
   }
 
+
+    const imgs = document.querySelectorAll('#sideGallery img');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          o.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    imgs.forEach(img => obs.observe(img));
+  } else {
+    // fallback: show immediately
+    imgs.forEach(i => i.classList.add('visible'));
+  }
+  
   function openModal(post){
     const overlay = document.getElementById('overlay');
     const modalWrapInner = document.getElementById('modalContent');
