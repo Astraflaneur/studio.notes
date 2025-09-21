@@ -1,7 +1,7 @@
 # Studio Notes
 
 A small notebook on the web.  
-Essays, fragments, sketches — half-finished things I’m trying and sharing.  
+Essays, fragments, sketches & half-finished things I’m trying and sharing.  
 
 **Live site** → [www.studionotes.com](https://astraflaneur.github.io/studio.notes/)
 
