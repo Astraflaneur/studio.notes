@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="Sagar Barad">
+  <meta name="description" content="Studio Notes: Reflections on art, life, and quiet experiments by Sagar Barad.">
+  <title>Studio Notes by Sagar Barad</title>
+
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>Studio Notes</h1>
+        <p>Reflections on art, life, and quiet experiments</p>
+      </div>
+
+      <nav>
+        <a data-page="home" class="active">Home</a>
+        <a data-page="essays">Essays</a>
+        <a data-page="sketches">Sketches</a>
+        <a data-page="now">Now</a>
+        <a data-page="about">About</a>
+        <a class="cta" data-page="compose" href="#">Write</a>
+
+<!-- Modal -->
+      <div id="writeOverlay" aria-hidden="true">
+        <div class="write-modal" role="dialog" aria-modal="true" style="position:relative;">
+          <button id="closeWrite" class="close-btn" aria-label="Close">✕</button>
+          <h2 style="margin-top:0">Write or Scratch</h2>
+
+          <div class="mode-tabs">
+            <button class="tab active" data-mode="text">Fragment</button>
+            <button class="tab" data-mode="draw">Scribble</button>
+          </div>
+
+          <div id="textMode" class="mode active">
+            <textarea id="oneLiner" maxlength="120" placeholder="I am thinking about..."></textarea>
+            <div class="controls">
+              <button id="downloadText" class="btn primary">Download as PNG</button>
+            </div>
+          </div>
+
+          <div id="drawMode" class="mode" style="display:none;">
+            <canvas id="drawCanvas" width="800" height="360"></canvas>
+            <div class="controls">
+              <button id="clearCanvas" class="btn">Clear</button>
+              <button id="downloadCanvas" class="btn primary">Download drawing</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div id="home" class="page active">
+          <div class="featured">
+            <div class="eyebrow">Featured</div>
+            <h2 id="featuredTitle">Fragments, Not Finished Things</h2>
+            <p class="lede" id="featuredLede">No one ever tells you how much of life is half-done. I’ve come to see that my work is rarely finished, 
+              only fragmentary i.e. drafts, sketches, half-thoughts that never close but together form a texture of practice. Meaning doesn’t arrive
+               as a final word, but in the fragments we choose to carry forward.</p>
+          </div>
+
+          <div class="posts" id="posts">
+            <!-- posts injected by JS -->
+          </div>
+        </div>
+
+        <div id="essays" class="page">
+          <h2>Essays</h2>
+          <p class="small">Longer pieces and reflections.</p>
+          <div id="essaysList"></div>
+        </div>
+
+        <div id="sketches" class="page">
+          <h2>Sketches</h2>
+          <p class="small">Shorter notes, images, and experiments.</p>
+          <div id="sketchesList"></div>
+        </div>
+
+        <div id="now" class="page">
+          <h2>Now</h2>
+          <div class="intro">
+            <p>Inspired by <a href="https://nownownow.com/" target="_blank" rel="noopener">nownownow.com</a>, here’s a snapshot of what I’m currently exploring, reading, and thinking about. 
+              This is a living list that changes often, reflecting the ebb and flow of my interests and projects.</p>
+            <p>Why share this? Because I believe in the value of transparency and the joy of shared curiosity. 
+              By making my current pursuits visible, I hope to connect with others who might be exploring similar paths or who are simply curious about the process behind the work.</p>
+            <p><em>Note: This list is a snapshot in time and may not represent all my ongoing interests or projects.</em></p>
+          </div>
+          
+          <div class="now-list">
+          <h3>What I’m up to these days:</h3>
+          <ul>
+            <li>Getting back into running; slow, but steadier than before.</li>
+            <li>Practicing typing (hovering around 92 wpm, aiming for 100).</li>
+            <li>Reading <em>The Left Hand of Darkness</em> by Ursula K. Le Guin.</li>
+            <li>Filling a sketchbook with quick ink drawings.</li>
+            <li>Learning bits of harmonica and keyboard.</li>
+            <li>Jotting down small notes and fragments of essays.</li>
+          </ul>
+        </div>
+        </div>
+
+        <div id="about" class="page">
+        <h2>About Me</h2>
+        
+        <div class="intro">
+          <p>
+            This site is a snapshot of the messy, ongoing things I’m trying, 
+            failing at, and slowly learning from. I started reading and writing 
+            later than I would have liked, so what you’ll find here are mostly 
+            fragments; half-baked observations on art, research, and life, 
+            alongside small experiments that don’t always lead anywhere but 
+            leave traces worth keeping.
+          </p>
+          
+          <p>
+            Why call this <em>Studio Notes</em>? Because I think of my work (and life) 
+            less like a finished gallery and more like a studio, full of drafts, 
+            sketches, revisions, and scraps that show the process as much as the 
+            product. These are notes to myself, but also an open sketchbook for 
+            anyone who happens to wander in.
+          </p>
+        </div>
+      </div>
+
+
+      <aside>
+        <div class="about-card">
+          <h3>Studio Notes</h3>
+          <p>I collect fragments: walks, failed drafts, photos, and recipes for afternoon tea. This sidebar shows a small gallery pulled from recent posts.</p>
+
+          <div style="margin-top:14px">
+            <strong style="font-size:13px">Gallery</strong>
+            <div class="gallery" id="sideGallery">
+              <img src="https://picsum.photos/seed/a/400/300" alt="sample">
+              <img src="https://picsum.photos/seed/b/400/300" alt="sample">
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </main>
+
+      <footer>
+        © <span id="year"></span> Studio Notes by Sagar Barad
+      </footer>
+    </div>
+
+    <div id="overlay" class="overlay" role="dialog" aria-hidden="true">
+      <div class="article-modal" id="articleModal">
+        <button class="close-btn" id="closeModal" aria-label="Close">✕</button>
+        <article id="modalContent"></article>
+      </div>
+    </div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
