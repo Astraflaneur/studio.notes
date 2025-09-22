@@ -9,6 +9,11 @@
       --max-width: 900px;
     }
 
+    /* TODO: add dark mode toggle
+    TODO: add subtle animations on scroll (fade in, slide up)
+    TODO: improve gallery image loading (lazy load with blur-up)
+    TODO: Website website in not responsive mode */
+    
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -31,29 +36,9 @@
 
     /* Featured post style */
     .featured{background:linear-gradient(180deg,rgba(138,93,255,0.05),transparent);padding:28px;border-radius:20px;border:1px solid rgba(15,15,20,0.04);box-shadow:0 20px 40px rgba(15,15,20,0.05)}
-    .featured .eyebrow{font-size:13px;color:var(--accent);font-weight:600;letter-spacing:0.06em}
+    .featured .eyebrow{font-size:16px;color:var(--accent-2);font-weight:700;letter-spacing:0.06em}
     .featured h2{font-family:'Playfair Display',serif;font-size:28px;margin:8px 0}
     .lede{font-size:16px;color:var(--muted);margin:8px 0 0}
-
-    .featured::before {
-  content: "Featured";
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  font-family: 'Playfair Display', serif;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(90deg,#8a5dff,#d36dff);
-  padding: 4px 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(138,93,255,0.25);
-}
-.featured {
-  position: relative; /* needed for ::before */
-}
 
     .posts{display:flex;flex-direction:column;gap:18px;margin-top:18px}
     .post-card{background:var(--card);border-radius:14px;padding:18px;border:1px solid rgba(12,12,15,0.04)}
@@ -64,31 +49,64 @@
     /* typographic touches */
     .dropcap{float:left;font-family:'Playfair Display',serif;font-size:56px;line-height:0.7;margin-right:12px;color:var(--accent-2)}
 
-    aside{position:relative}
-    .about-card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(12,12,15,0.03)}
-    .about-card h3{font-family:'Playfair Display',serif;margin:0}
-    .about-card p{color:var(--muted);margin-top:8px}
+    /* ===== Normalize about-card (one authoritative rule) ===== */
+aside { position: relative; }
 
-
-      .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
-      .gallery img{
-        width:100%;
-        height:160px;
-        object-fit:cover;
-        border-radius:8px;
-        /* ensure visible no matter what */
-        opacity:1 !important;
-        transform:none !important;
-        visibility:visible !important;
-        position:relative !important;
-        z-index:1000 !important;
-        background:linear-gradient(90deg,#eee,#fff);
-      }
-
-      #sideGallery img {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+/* Single source of truth for about-card */
+.about-card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;          /* pick one radius */
+  border: 1px solid rgba(12,12,15,0.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  width: 100%;                  /* occupy available width of its container */
+  max-width: none;              /* remove small fixed max */
+  overflow: visible;            /* allow children (images) to show their transitions */
+  box-sizing: border-box;
 }
+
+/* tighten typography but keep accessibility */
+.about-card h3 { font-family: 'Playfair Display', serif; margin: 0; }
+.about-card p { color: var(--muted); margin-top: 8px; }
+
+/* ===== Make gallery responsive and avoid forced clipping ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+  align-items: stretch;         /* ensure grid items fill row height */
+  width: 100%;
+}
+
+/* Prefer fluid heights, let content determine height but ensure a min */
+.gallery img {
+  width: 100%;
+  height: auto;                 /* allow natural aspect ratio */
+  min-height: 120px;            /* ensures a reasonable thumbnail height */
+  object-fit: cover;            /* crop to fill gracefully */
+  border-radius: 8px;
+  display: block;
+  opacity: 1;                   /* remove !important usage */
+  transform: none;
+  visibility: visible;
+  position: relative;
+  z-index: 1;                   /* avoid giant z-index unless needed */
+  background: linear-gradient(90deg,#eee,#fff);
+}
+
+/* If you use the blur-wrapper/placeholder pattern, ensure the wrapper doesn't clip */
+.blur-wrapper { overflow: hidden; border-radius: 8px; position: relative; }
+
+/* Side gallery smaller images */
+#sideGallery img { height: auto; min-height: 90px; }
+
+/* Small viewport tweaks */
+@media (max-width: 700px) {
+  .gallery { grid-template-columns: 1fr; }
+  .about-card { padding: 14px; }
+}
+
 
   /* debug helpers */
   .debug{margin-top:12px;font-size:13px;color:#555}
@@ -333,7 +351,7 @@ nav a.active::after{
 }
 
  /* minimal styling for demo */
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 40px; background:#f7f6f3; color:#111 }
+  /* body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 40px; background:#f7f6f3; color:#111 } */
   a.cta{ display:inline-block; padding:8px 12px; background:#111;color:#fff;border-radius:6px;text-decoration:none; }
   /* overlay */
   #writeOverlay{ position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,0.55); opacity:0; pointer-events:none; transition:opacity .28s ease; z-index:9999 }
