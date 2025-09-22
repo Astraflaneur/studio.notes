@@ -48,7 +48,7 @@
       title:'Things I’ve Carried (and Still Forgot My Charger)',
       author:'Sagar P. Barad',
       date:'June 2025',
-      excerpt:'A life measured in backpacks, tote bags, and broken trolley wheels — and what we choose to carry forward.',
+      excerpt:'A life measured in backpacks, tote bags, and broken trolley wheels and what we choose to carry forward.',
       tags:['essay','life'],
       body:`<p><span class="dropcap">O</span>ne thing no one tells you about growing up: 
       your life can be measured by the bags you’ve carried.</p>
@@ -94,7 +94,7 @@
       title:'Just So We’re Clear',
       author:'Sagar P. Barad',
       date:'July 2025',
-      excerpt:'The quiet, ordinary, forgettable moments — they’re the ones that make it real.',
+      excerpt:'The quiet, ordinary, forgettable moments they’re the ones that make it real.',
       tags:['essay','reflection'],
       body:`<p><span class="dropcap">I</span> know you’ve got a lot going on right now, 
       but this is it. This moment. 
