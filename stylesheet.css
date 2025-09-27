@@ -7,6 +7,12 @@
       --accent-2: #d4b483; /* warm beige */
       --radius: 16px;
       --max-width: 900px;
+      --gap: 10px;
+      --radius: 10px;
+      --hover-scale: 1.04;
+      --hover-dim: 0.08; /* darkness on hover */
+      --shadow: 0 6px 24px rgba(0,0,0,.12);
+      --speed: 220ms;
     }
 
     /* TODO: add dark mode toggle
@@ -72,48 +78,133 @@ aside { position: relative; }
 /* ===== Make gallery responsive and avoid forced clipping ===== */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  margin-top: 12px;
-  align-items: stretch;         /* ensure grid items fill row height */
-  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--gap);
+  margin-top: 10px;
 }
 
-/* Prefer fluid heights, let content determine height but ensure a min */
-.gallery img {
-  width: 100%;
-  height: auto;                 /* allow natural aspect ratio */
-  min-height: 120px;            /* ensures a reasonable thumbnail height */
-  object-fit: cover;            /* crop to fill gracefully */
-  border-radius: 8px;
-  display: block;
-  opacity: 1;                   /* remove !important usage */
-  transform: none;
-  visibility: visible;
-  position: relative;
-  z-index: 1;                   /* avoid giant z-index unless needed */
-  background: linear-gradient(90deg,#eee,#fff);
-}
+    .gallery figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      margin: 0;
+      cursor: zoom-in;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+      transition: transform var(--speed) ease, box-shadow var(--speed) ease;
+      background: linear-gradient(90deg,#eee,#fff);
+    }
 
-/* If you use the blur-wrapper/placeholder pattern, ensure the wrapper doesn't clip */
-.blur-wrapper { overflow: hidden; border-radius: 8px; position: relative; }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      transform: scale(1);
+      transition: transform var(--speed) ease, opacity var(--speed) ease;
+    }
+    /* Hover animation: subtle lift + either fade-in or fade-out overlay */
+    .gallery figure::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(120% 120% at 80% 10%, rgba(255,255,255,.0) 0%, rgba(0,0,0,var(--hover-dim)) 100%);
+      opacity: 0; transition: opacity var(--speed) ease;
+      pointer-events: none;
+    }
 
-/* Side gallery smaller images */
-#sideGallery img { height: auto; min-height: 90px; }
+    .gallery figure:hover {
+      transform: translateY(-2px) scale(var(--hover-scale));
+      box-shadow: 0 10px 36px rgba(0,0,0,.16);
+    }
 
-/* Small viewport tweaks */
-@media (max-width: 700px) {
-  .gallery { grid-template-columns: 1fr; }
-  .about-card { padding: 14px; }
-}
+    /* Change one line below to choose FADES:
+       - Fade OUT image on hover: set img opacity to .85 and overlay to 1
+       - Fade IN image on hover: set img opacity to 1 and overlay to .4 (already 0 base) */
+    .gallery figure:hover img { opacity: .9; transform: scale(1.02); }
+    .gallery figure:hover::after { opacity: 1; }
 
+    /* Lightbox (full-screen) */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(10,10,11,.85);
+      display: grid; place-items: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--speed) ease, visibility var(--speed) step-end;
+      z-index: 999;
+    }
+    .lightbox.open { opacity: 1; visibility: visible; transition: opacity var(--speed) ease, visibility 0s;
+    }
+
+    .lightbox__imgwrap {
+      position: relative; max-width: min(92vw, 1200px); max-height: 86vh; width: 100%;
+      aspect-ratio: auto; display: grid; place-items: center;
+      overflow: hidden; border-radius: 14px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
+      animation: pop var(--speed) ease;
+    }
+
+    .lightbox__imgwrap img { max-width: 100%; max-height: 86vh; display: block; }
+
+    @keyframes pop { from { transform: translateY(8px) scale(.98); } to { transform: translateY(0) scale(1); } }
+
+    .lightbox__close, .lightbox__nav {
+      position: absolute; top: 10px; display: flex; gap: 8px; z-index: 2;
+    }
+    .lightbox__close { right: 10px; }
+
+    .iconbtn {
+      -webkit-tap-highlight-color: transparent;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff; border-radius: 999px; padding: 10px 12px;
+      cursor: pointer; font-size: 14px;
+      backdrop-filter: blur(6px);
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+    }
+    .iconbtn:hover { transform: translateY(-1px); background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35); }
+
+    /* Prev/Next arrows */
+    .lightbox__nav { left: 10px; }
+
+    /* Hide arrows on narrow screens for simplicity */
+    @media (max-width: 520px) {
+      .lightbox__nav { display:none; }
+    }
+
+    @media (max-width: 700px) {
+      .gallery { grid-template-columns: 1fr; }
+      .about-card { padding: 14px; }
+    }
 
   /* debug helpers */
-  .debug{margin-top:12px;font-size:13px;color:#555}
-  .outline-debug{outline:2px dashed rgba(0,128,0,0.6)}
+    .debug{margin-top:12px;font-size:13px;color:#555}
+    .outline-debug{outline:2px dashed rgba(0,128,0,0.6)}
 
     .page{display:none}
     .page.active{display:block}
+    .morebtn {
+      margin-top: 14px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(90deg, #f6f0ff 0%, #fffbe6 100%);
+      color: #5a3fc0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(138,93,255,0.10), 0 1px 0 rgba(255,255,255,0.7) inset;
+      transition: box-shadow 180ms var(--ease), transform 180ms var(--ease), background 180ms var(--ease);
+    }
+    .morebtn:hover {
+      background: linear-gradient(90deg, #e9e3ff 0%, #fff3d6 100%);
+      color: #3d2a7a;
+      box-shadow: 0 10px 32px rgba(138,93,255,0.18), 0 2px 0 rgba(255,255,255,0.8) inset;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .is-hidden { display: none; }
+
+  
 
     footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
 

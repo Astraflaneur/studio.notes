@@ -301,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
   // ---------- Text download (kept the same but defensive) ----------
   if(downloadTextBtn && oneLiner){
     downloadTextBtn.addEventListener('click', function(){
@@ -435,6 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
       points = [];
       try{ canvas.releasePointerCapture && canvas.releasePointerCapture(e.pointerId); }catch(_) {}
     }
+
+    
 
     // attach pointer listeners
     canvas.style.touchAction = 'none';

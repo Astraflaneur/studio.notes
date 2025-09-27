@@ -139,21 +139,48 @@
       </div>
 
 
-      <aside>
-        <div class="about-card">
-          <h3>Studio Notes</h3>
-          <p>I collect fragments: walks, failed drafts, photos, and recipes for afternoon tea. This sidebar shows a small gallery pulled from recent posts.</p>
+  <aside>
+    <div class="about-card">
+      <h3>Studio Notes</h3>
+      <p>I collect fragments: walks, failed drafts, photos, and recipes for afternoon tea. This sidebar shows a small gallery pulled from recent posts.</p>
 
-          <div style="margin-top:14px">
-            <strong style="font-size:13px">Gallery</strong>
-            <div class="gallery" id="sideGallery"> #FIXME - images not appearing
-              <img src="https://picsum.photos/seed/a/400/300" alt="sample">
-              <img src="https://picsum.photos/seed/b/400/300" alt="sample">
-            </div>
-          </div>
-
+      <div style="margin-top:14px">
+        <strong style="font-size:13px">Gallery</strong>
+        <button class="morebtn" id="showMoreBtn" aria-expanded="false" style="margin-bottom:10px">Show more</button>
+        <div class="gallery" id="gallery">
+          <!-- Replace src paths with your images; data-full can point to larger versions if you have them -->
+          <figure><img src="./images/Gallery/digi-cam-1.png" alt="sample 1" loading="lazy" data-full="./images/Gallery/digi-cam-1.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-2.png" alt="sample 2" loading="lazy" data-full="./images/Gallery/digi-cam-2.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-3.png" alt="sample 3" loading="lazy" data-full="./images/Gallery/digi-cam-3.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-4.png" alt="sample 4" loading="lazy" data-full="./images/Gallery/digi-cam-4.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-5.png" alt="sample 5" loading="lazy" data-full="./images/Gallery/digi-cam-5.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-6.png" alt="sample 6" loading="lazy" data-full="./images/Gallery/digi-cam-6.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-7.png" alt="sample 7" loading="lazy" data-full="./images/Gallery/digi-cam-7.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-8.png" alt="sample 8" loading="lazy" data-full="./images/Gallery/digi-cam-8.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-9.png" alt="sample 9" loading="lazy" data-full="./images/Gallery/digi-cam-9.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-10.png" alt="sample 10" loading="lazy" data-full="./images/Gallery/digi-cam-10.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-11.png" alt="sample 11" loading="lazy" data-full="./images/Gallery/digi-cam-11.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-12.png" alt="sample 12" loading="lazy" data-full="./images/Gallery/digi-cam-12.png"></figure>
+          <figure><img src="./images/Gallery/digi-cam-14.png" alt="sample 14" loading="lazy" data-full="./images/Gallery/digi-cam-14.png"></figure>
         </div>
-      </aside>
+      </div>
+    </div>
+  </aside>
+
+      <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <div class="lightbox__imgwrap">
+      <img id="lightboxImg" alt="Expanded image" />
+      <div class="lightbox__nav">
+        <button class="iconbtn" id="prevBtn" aria-label="Previous image">&#9664;</button>
+        <button class="iconbtn" id="nextBtn" aria-label="Next image">&#9654;</button>
+      </div>
+      <div class="lightbox__close">
+        <button class="iconbtn" id="closeBtn" aria-label="Close">&times;</button>
+      </div>
+    </div>
+  </div>
+
     </main>
 
       <footer>
@@ -169,6 +196,178 @@
     </div>
 
 <script src="scripts.js"></script>
+ <script>
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const closeBtn = document.getElementById('closeBtn');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      const figures = Array.from(gallery.querySelectorAll('figure'));
+      const imgs = figures.map(f => f.querySelector('img'));
+      let index = 0;
+
+      function openAt(i){
+        index = i;
+        const img = imgs[index];
+        const full = img.getAttribute('data-full') || img.src;
+        lbImg.src = full; lbImg.alt = img.alt || 'image';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        // Prevent stale flashes when reopening a different image quickly
+        setTimeout(() => { lbImg.removeAttribute('src'); }, 150);
+      }
+      function next(){ openAt((index + 1) % imgs.length); }
+      function prev(){ openAt((index - 1 + imgs.length) % imgs.length); }
+
+      figures.forEach((fig, i) => {
+        fig.addEventListener('click', () => openAt(i));
+        fig.addEventListener('keydown', (e) => { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); openAt(i); } });
+        fig.setAttribute('tabindex', '0');
+        fig.setAttribute('role', 'button');
+        fig.setAttribute('aria-label', 'Open image ' + (i+1));
+      });
+
+      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+      closeBtn.addEventListener('click', close);
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      document.addEventListener('keydown', (e) => {
+        if(lb.classList.contains('open')){
+          if(e.key === 'Escape') close();
+          if(e.key === 'ArrowRight') next();
+          if(e.key === 'ArrowLeft') prev();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+  (function(){
+    const gallery   = document.getElementById('gallery');
+    const lb        = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lightboxImg');
+    const closeBtn  = document.getElementById('closeBtn');
+    const prevBtn   = document.getElementById('prevBtn');
+    const nextBtn   = document.getElementById('nextBtn');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+
+    // ---- click-tracking helpers ----
+    const CLICK_KEY_PREFIX = 'galleryClicks:';
+    function getClickCount(key){
+      const n = localStorage.getItem(CLICK_KEY_PREFIX + key);
+      return n ? parseInt(n, 10) : 0;
+    }
+    function addClick(key){
+      const n = getClickCount(key) + 1;
+      localStorage.setItem(CLICK_KEY_PREFIX + key, String(n));
+    }
+
+    // ---- sort figures by popularity (desc) and rebuild DOM ----
+    let figures = Array.from(gallery.querySelectorAll('figure'));
+    figures.sort((a,b) => {
+      const ia = a.querySelector('img'); const ib = b.querySelector('img');
+      const ka = ia.getAttribute('data-full') || ia.getAttribute('src') || '';
+      const kb = ib.getAttribute('data-full') || ib.getAttribute('src') || '';
+      return getClickCount(kb) - getClickCount(ka);
+    });
+    figures.forEach(f => gallery.appendChild(f));
+    let imgs = figures.map(f => f.querySelector('img'));
+
+    // ---- lightbox ----
+    let index = 0;
+    function openAt(i){
+      index = i;
+      const img  = imgs[index];
+      const full = img.getAttribute('data-full') || img.src;
+      lbImg.src = full; lbImg.alt = img.alt || 'image';
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      setTimeout(()=>{ lbImg.removeAttribute('src'); }, 150);
+    }
+    function next(){ openAt((index + 1) % imgs.length); }
+    function prev(){ openAt((index - 1 + imgs.length) % imgs.length); }
+
+    // ---- wire up figures (count clicks on figure open only) ----
+    figures.forEach((fig, i) => {
+      fig.addEventListener('click', () => {
+        const key = imgs[i].getAttribute('data-full') || imgs[i].src;
+        addClick(key);
+        openAt(i);
+      });
+      fig.addEventListener('keydown', (e) => {
+        if(e.key==='Enter' || e.key===' ') {
+          e.preventDefault();
+          const key = imgs[i].getAttribute('data-full') || imgs[i].src;
+          addClick(key);
+          openAt(i);
+        }
+      });
+      fig.setAttribute('tabindex','0');
+      fig.setAttribute('role','button');
+      fig.setAttribute('aria-label','Open image ' + (i+1));
+    });
+
+    lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+    closeBtn.addEventListener('click', close);
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    document.addEventListener('keydown', (e) => {
+      if(lb.classList.contains('open')){
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowRight') next();
+        if(e.key === 'ArrowLeft')  prev();
+      }
+    });
+
+    // ---- show more (top button) ----
+    const initialCount = 6;  // show at first
+    const batchSize    = 6;  // reveal per click
+
+    function updateMoreButton(){
+      const hiddenCount = figures.filter(f => f.classList.contains('is-hidden')).length;
+      if(hiddenCount === 0){
+        showMoreBtn.style.display = 'none';
+        showMoreBtn.setAttribute('aria-expanded','true');
+      } else {
+        showMoreBtn.style.display = '';
+        showMoreBtn.textContent = `Show more (${hiddenCount})`;
+        showMoreBtn.setAttribute('aria-expanded','false');
+      }
+    }
+
+    figures.forEach((fig, i) => { if(i >= initialCount) fig.classList.add('is-hidden'); });
+    updateMoreButton();
+
+    showMoreBtn.addEventListener('click', () => {
+      let revealed = 0;
+      for(let i=0; i<figures.length && revealed<batchSize; i++){
+        const fig = figures[i];
+        if(fig.classList.contains('is-hidden')){
+          fig.classList.remove('is-hidden');
+          revealed++;
+        }
+      }
+      updateMoreButton();
+    });
+  })();
+</script>
+
 
 </body>
 </html>
