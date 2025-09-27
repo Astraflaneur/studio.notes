@@ -34,7 +34,7 @@
 
     <p>But pixels forgive. 
     Ctrl+Z is the friend who always answers your calls. 
-    And honestly, that’s why half my sketches survive — 
+    And honestly, that’s why half my sketches survive  
     because I can fix the mistake I swore was “intentional texture.”</p>
 
     <blockquote>Rule: keep the smudge. Delete the guilt.</blockquote>
