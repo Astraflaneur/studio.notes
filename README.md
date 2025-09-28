@@ -24,3 +24,5 @@ Clone and serve locally:
 git clone https://github.com/Astraflaneur/studio.notes.git
 cd studionotes
 open index.html   # or use any local server
+
+<sub>† Portions of the code were written with GitHub Copilot; all code was reviewed and verified by the author.</sub>
