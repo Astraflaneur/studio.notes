@@ -1,6 +1,6 @@
   const allPosts = [
   {
-    id:1,
+    id:2,
     title:'Morning Pages',
     author:'Sagar P. Barad',
     date:'September 2025',
@@ -21,7 +21,7 @@
     It’s to prove you showed up, even if the page looks like chicken scratch.</p>`
   },
   {
-    id:2,
+    id:3,
     title:'On Paper & Pixel',
     author:'Sagar P. Barad',
     date:'August 2025',
@@ -44,7 +44,7 @@
   },
 
   {
-      id:3,
+      id:4,
       title:'Things I’ve Carried (and Still Forgot My Charger)',
       author:'Sagar P. Barad',
       date:'June 2025',
@@ -90,7 +90,7 @@
       Even if you forgot your charger. Again.</blockquote>`
     },
     {
-      id:4,
+      id:5,
       title:'Just So We’re Clear',
       author:'Sagar P. Barad',
       date:'July 2025',
@@ -129,7 +129,7 @@
       It’s everything the world tries to convince you to avoid.</p>`
     },
   {
-  id: 5,
+  id: 1,
   title: 'My Most Embarrassing Research Presentation, And Why I’m Glad It Happened',
   author: 'Sagar P. Barad',
   date: 'November 2025',
