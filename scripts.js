@@ -1,4 +1,31 @@
   const allPosts = [
+      {
+  id: 1,
+  title: 'My Most Embarrassing Research Presentation, And Why I’m Glad It Happened',
+  author: 'Sagar P. Barad',
+  date: 'November 2025',
+  excerpt: 'The worst day of my early research journey, and how it slowly turned into a story worth keeping.',
+  tags: ['essay', 'reflection', 'academia', 'growth'],
+  body: `<p><span class="dropcap">E</span>xactly one year ago today, I gave the most embarrassing research presentation of my life. I didn’t talk about it for months. I wasn’t ready to. Not because it hurt, but because I couldn’t understand how <em>that</em> moment happened to <em>me</em>.</p>
+
+  <p>I had just started applying for PhD positions, unsure if I was even good enough. I googled "PhD position Machine Learning in Europe" and somewhere on page two, I found an opening at IMPRS. I read about the project, looked up one of the guides, and spent time reading his papers. In one of them, I noticed something I didn’t fully agree with, and I wrote down a few insights. Before even applying, I emailed him with a short research note and some initial results.</p>
+
+  <p>I wasn’t expecting a reply, but within an hour, I got one. He asked if I could meet online at 10:00 CET. I said yes immediately, pretending to be calm while my heart sprinted through walls. We met later that week. I explained my idea and plan. He wasn’t fully convinced, but he liked my background. That alone put me on top of the world. A world-class researcher had taken me seriously. Validation does dangerous things.</p>
+
+  <p>I decided I could prepare the entire project in the next ten days and impress the committee. I was overloaded with coursework but convinced adrenaline could substitute sleep. I finished everything right on time, even made my slides fifteen minutes before presenting. I didn’t rehearse. I thought ten days of obsession made me invincible.</p>
+
+  <p>The first fifteen minutes went surprisingly well. Then came slide six. One of my plots was noisy, and I hadn’t had enough time to run longer experiments, so I smoothed it using EMA to show the downward trend. I had the original in the backup slides. Someone asked why the plot didn’t show noise if I claimed it was noisy. I said I smoothed it for clarity and could show the original. But the tone changed. Something sank. The meeting ended early. Not even politely, just... ended.</p>
+
+  <p>Three days earlier, I was floating. Now, I couldn’t even finish speaking. My confidence collapsed like wet paper. The worst part wasn’t the meeting. It was waking up the next day and replaying it, frame by frame, trapped in the guilt of how confidently I had stepped into my own humiliation.</p>
+
+  <p>I didn’t tell anyone. Not because it was a failure, but because it didn’t align with who I thought I was becoming. The first rejection always hurts the most. The next one, mine was from ETH Zürich, hurt less, and eventually, rejection became a part of the journey rather than an attack on identity.</p>
+
+  <blockquote>Some moments feel like endings, but later, they age into stories you’re grateful to own.</blockquote>
+
+  <p>So what now, is there a happy ending to this story? I eventually got a PhD position. Life moved on. Confidence rebuilt itself, slower this time, sturdier.</p>
+
+  <p>And that’s why I’m writing this today, on its anniversary. Not as a wound, but as a milestone. I don’t want to forget it. I want it to live exactly where it belongs, in the archive of turning points.</p>`
+},
   {
     id:2,
     title:'Morning Pages',
@@ -127,35 +154,7 @@
       they’re the ones that make it real. 
       And growing up? 
       It’s everything the world tries to convince you to avoid.</p>`
-    },
-  {
-  id: 1,
-  title: 'My Most Embarrassing Research Presentation, And Why I’m Glad It Happened',
-  author: 'Sagar P. Barad',
-  date: 'November 2025',
-  excerpt: 'The worst day of my early research journey, and how it slowly turned into a story worth keeping.',
-  tags: ['essay', 'reflection', 'academia', 'growth'],
-  body: `<p><span class="dropcap">E</span>xactly one year ago today, I gave the most embarrassing research presentation of my life. I didn’t talk about it for months. I wasn’t ready to. Not because it hurt, but because I couldn’t understand how <em>that</em> moment happened to <em>me</em>.</p>
-
-  <p>I had just started applying for PhD positions, unsure if I was even good enough. I googled "PhD position Machine Learning in Europe" and somewhere on page two, I found an opening at IMPRS. I read about the project, looked up one of the guides, and spent time reading his papers. In one of them, I noticed something I didn’t fully agree with, and I wrote down a few insights. Before even applying, I emailed him with a short research note and some initial results.</p>
-
-  <p>I wasn’t expecting a reply, but within an hour, I got one. He asked if I could meet online at 10:00 CET. I said yes immediately, pretending to be calm while my heart sprinted through walls. We met later that week. I explained my idea and plan. He wasn’t fully convinced, but he liked my background. That alone put me on top of the world. A world-class researcher had taken me seriously. Validation does dangerous things.</p>
-
-  <p>I decided I could prepare the entire project in the next ten days and impress the committee. I was overloaded with coursework but convinced adrenaline could substitute sleep. I finished everything right on time, even made my slides fifteen minutes before presenting. I didn’t rehearse. I thought ten days of obsession made me invincible.</p>
-
-  <p>The first fifteen minutes went surprisingly well. Then came slide six. One of my plots was noisy, and I hadn’t had enough time to run longer experiments, so I smoothed it using EMA to show the downward trend. I had the original in the backup slides. Someone asked why the plot didn’t show noise if I claimed it was noisy. I said I smoothed it for clarity and could show the original. But the tone changed. Something sank. The meeting ended early. Not even politely, just... ended.</p>
-
-  <p>Three days earlier, I was floating. Now, I couldn’t even finish speaking. My confidence collapsed like wet paper. The worst part wasn’t the meeting. It was waking up the next day and replaying it, frame by frame, trapped in the guilt of how confidently I had stepped into my own humiliation.</p>
-
-  <p>I didn’t tell anyone. Not because it was a failure, but because it didn’t align with who I thought I was becoming. The first rejection always hurts the most. The next one, mine was from ETH Zürich, hurt less, and eventually, rejection became a part of the journey rather than an attack on identity.</p>
-
-  <blockquote>Some moments feel like endings, but later, they age into stories you’re grateful to own.</blockquote>
-
-  <p>So what now, is there a happy ending to this story? I eventually got a PhD position. Life moved on. Confidence rebuilt itself, slower this time, sturdier.</p>
-
-  <p>And that’s why I’m writing this today, on its anniversary. Not as a wound, but as a milestone. I don’t want to forget it. I want it to live exactly where it belongs, in the archive of turning points.</p>`
-}
-
+    }
 
   ];
 
